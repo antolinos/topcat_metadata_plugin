@@ -1,0 +1,19 @@
+
+<br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			
+			<div class="panel panel-default" ng-repeat="dataset in browseDatasetController.datasets">
+				<div class="panel-heading">{{dataset.name}}</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+				<div class="panel-footer text-right">
+					<button class="btn btn-xs btn-primary" ng-click="dataset.browse()">View Datafiles</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
