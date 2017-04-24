@@ -1,279 +1,63 @@
-<script type='text/ng-template' id="summary"> 
-	<div class="col-sm-2">
-		<table class="table table-condensed">			   
-			<tbody>
-				<tr>
-					<td>Dataset</td>
-					<td style='font-weight:bold'>{{dataset.name}}</td>				
-				</tr>			     
-				<tr>
-					<td>Technique</td>
-					<td style='font-weight:bold'>{{dataset.definition}} {{dataset.scanType}}</td>				
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<!-- DATASET LEFT HEADER -->
+<script type='text/ng-template' id="LEFT_HEADER"> 
+	<div  class="panel-heading clearfix">
+	   <div class="pull-left">
+	      <span style='font-size:12px;color:blue;'>
+	      <kbd style='background-color:#CCCCCC;color:blue;'>{{dataset.definition}} {{dataset.scanType}}</kbd> 
+	      </span>
+	      {{dataset.startDate}}
+	      <br />
+	      <p style='font-size:10px;'>{{dataset.location}}</p>
+	   </div>
+	</div>	
+</script>
 
 
-	<div class="col-sm-4">
-		<table class="table table-condensed">			   
-			<tbody>			     
-				<tr>
-					<td>Sample</td>
-					<td style='font-weight:bold'>{{dataset.Sample_name}}</td>				
-				</tr>
-				<tr>
-					<td>Description</td>
-					<td style='font-weight:bold'>{{dataset.Sample_description}}</td>				
-				</tr>
-			</tbody>
-		</table>
+<!-- FLUOIMAGE -->
+<script type='text/ng-template' id="FLUOIMAGE">      
+       <ng-include src="'LEFT_HEADER'"></ng-include>
+
+	<div class="pull-right">
+		<ul class="nav nav-tabs" id="myTabs">					 
+		</ul>
 	</div>
 
 </script>
 
-<!-- SUMMARY FLUOIMAGE -->
-<script type='text/ng-template' id="FLUOIMAGE_summary"> 
- <div class="container-fluid">
-   <div class="row">
-      <ng-include src="'summary'"></ng-include>
-      <div class="col-sm-2">
-         <table class="table table-condensed">
-            <tbody>
-               <tr>
-                  <td>Machine Mode</td>
-                  <td style='font-weight:bold'>{{dataset.machineMode}}</td>
-               </tr>
-               <tr>
-                  <td>Insertion Device Name</td>
-                  <td style='font-weight:bold'>{{dataset.insertionDeviceName}}</td>
-               </tr>
-               <tr>
-                  <td>Insertion Device Gap</td>
-                  <td style='font-weight:bold'>{{dataset.insertionDeviceGap}}</td>
-               </tr>
-               <tr>
-                  <td>Vacuum</td>
-                  <td style='font-weight:bold'>{{dataset.vacuum_labels}}</td>
-               </tr>
-               <tr>
-                  <td>Values</td>
-                  <td style='font-weight:bold'>{{dataset.vacuum_values}}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-
-     <div class="col-sm-2">
-         <table class="table table-condensed">
-            <tbody>
-               <tr>
-                  <td>Axis 1</td>
-                  <td style='font-weight:bold'>{{dataset.scanAxis_1}}</td>
-               </tr>
-               <tr>
-                  <td>Axis 2</td>
-                  <td style='font-weight:bold'>{{dataset.scanAxis_2}}</td>
-               </tr>
-               <tr>
-                  <td>Monochromator Name</td>
-                  <td style='font-weight:bold'>{{dataset.monochromatorName}}</td>
-               </tr>
-               <tr>
-                  <td>Filter</td>
-                  <td style='font-weight:bold'>{{dataset.filter}}</td>
-               </tr>
-               <tr>
-                  <td>pixelSize</td>
-                  <td style='font-weight:bold'>{{dataset.pixelSize}}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-
-      <div class="col-sm-2">
-         <table class="table table-condensed">
-            <tbody>
-               <tr>
-                  <td>TOMO_energy</td>
-                  <td style='font-weight:bold'>{{dataset.TOMO_energy}}</td>
-               </tr>
-               <tr>
-                  <td>SR_Current</td>
-                  <td style='font-weight:bold'>{{dataset.SR_Current}}</td>
-               </tr>
-               <tr>
-                  <td>SCAN_N</td>
-                  <td style='font-weight:bold'>{{dataset.SCAN_N}}</td>
-               </tr>
-               <tr>
-                  <td>dwellTime</td>
-                  <td style='font-weight:bold'>{{dataset.dwellTime}}</td>
-               </tr>
-               <tr>
-                  <td>it</td>
-                  <td style='font-weight:bold'>{{dataset.it}}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
 
 
-   </div>
-</div>
-</script>
+ 
 
 
-<!-- SUMMARY TOMO -->
-<script type='text/ng-template' id="TOMO_summary"> 
-   TOMO
-   <div class="container-fluid">
-         <div class="row">
-       <ng-include src="'summary'"></ng-include>
-   </div>
-         </div>
-</script>
-
-
-<!-- SUMMARY SXM -->
-<script type='text/ng-template' id="SXM_summary"> 
-	<div class="container-fluid">
-		<div class="row">
-			<ng-include src="'summary'"></ng-include>
-		</div>
-	</div>
-</script>
-
-
-<script type='text/ng-template' id="tabs"> 
-	<ul class="nav nav-tabs" id="myTabs">
-		<li class="active"><a data-toggle="tab" href="#summary" target="_self">Summary</a></li>
-		<li><a data-toggle="tab" href="#menu1" target="_self">Menu 1</a></li>
-		<li><a data-toggle="tab" href="#menu2" target="_self">Menu 2</a></li>
-	</ul>
-</script>
-
-<script type='text/ng-template' id="tabs_body"> 
-	<div id="home" class="tab-pane fade">
-	<h3>Menu 1</h3>
-	<p>Some content in menu 1.</p>
-	</div>
-
-	<div id="menu1" class="tab-pane fade">
-		<h3>Menu 1</h3>
-		<p>Some content in menu 1.</p>
-	</div>
-
-	<div id="menu2" class="tab-pane fade">
-		<h3>Menu 2</h3>
-		<p>Some content in menu 2.</p>
-	</div>    
-</script>
-
-
-<script type='text/ng-template' id="SXM_tabs"> 
-	<ul class="nav nav-tabs" id="myTabs">
-		<li class="active"><a data-toggle="tab" href="#home" target="_self">Summary</a></li>
-		<li><a data-toggle="tab" href="#Instrument" target="_self">Instrument</a></li>
-
-	</ul>
-</script>
-
-<script type='text/ng-template' id="SXM_tabs_body"> 
-
-	<div id="Instrument" class="tab-pane fade">
-		<h3>Instrument</h3>
-
-	</div>
-</script>
-
-
-<!-- Main Body -->
+<!-- MAIN DATASET LOOP -->
 <div  class="container-fluid">
    <div style='font-size:12px;' class="row">
       <div class="col-sm-12">
          <div class="panel panel-default with-nav-tabs" ng-repeat="dataset in browseDatasetController.datasets">
-            <!-- <div ng-if="dataset.definition == 'SXM'" class="panel-heading clearfix">-->
-            <div  class="panel-heading clearfix">
-               <div class="pull-left">
-                  <span style='font-size:12px;color:blue;'>
-                  <kbd style='background-color:#CCCCCC;color:blue;'>{{dataset.definition}} {{dataset.scanType}}</kbd> 
-                  </span>
-                  {{dataset.startDate}}
-                  <br />
-                  <p style='font-size:10px;'>{{dataset.location}}</p>
-               </div>
+            <ANY ng-switch="dataset.scanType">
+               <!-- SXM -->
+               <ANY ng-switch-when="SXM">
+                  <ng-include src="'SXM_tabs'"></ng-include>
+               </ANY>
+               <!-- FLUOIMAGE -->
+               <ANY ng-switch-when="fluoimage">
+                  <ng-include src="'FLUOIMAGE'">
+               </ANY>
+               <ANY ng-switch-when="fasttomo">
+                  <ng-include src="'FLUOIMAGE'">
+               </ANY>
+               <ANY ng-switch-when="holonfpscan">
+                  <ng-include src="'FLUOIMAGE'">
+               </ANY>
 
-
-               <div class="pull-right">
-			<ul class="nav nav-tabs" id="myTabs">				
-				  <ANY ng-switch="dataset.scanType">
-					<!-- SXM -->
-				        <ANY ng-switch-when="SXM">
-				           <ng-include src="'SXM_tabs'"></ng-include>
-				        </ANY>
-					<!-- FLUOIMAGE -->
-				        <ANY ng-switch-when="fluoimage">
-				           <ng-include src="'FLUOIMAGE_tabs'">
-				        </ANY>
-					<!-- DEFAULT -->
-				        <ANY ng-switch-default>
-				           <ng-include src="'tabs'"></ng-include>
-				        </ANY>
-				  </ANY>
-
-			</ul>
-			
-               </div>
-            </div>
-            <div class="panel-body">
-
-
-               <div class="tab-content">
-
-                  <!-- summary -->
-                  <div id="Summary" class="tab-pane fade in active">
-                     <ANY ng-switch="dataset.scanType">
-			<!-- SXM -->
-                        <ANY ng-switch-when="SXM">
-                           <ng-include src="'SXM_summary'"></ng-include>
-                        </ANY>
-			<!-- FLUOIMAGE -->
-                        <ANY ng-switch-when="fluoimage">
-                           <ng-include src="'FLUOIMAGE_summary'">
-                        </ANY>
-			<!-- DEFAULT -->
-                        <ANY ng-switch-default>
-                           <ng-include src="'summary'"></ng-include>
-                        </ANY>
-                     </ANY>
-                  </div>
-
-	
-
-	<div id="menu1" class="tab-pane fade">
-		<h3>Menu 1</h3>
-		<p>Some content in menu 1.</p>
-	</div>
-
-	<div id="menu2" class="tab-pane fade">
-		<h3>Menu 2</h3>
-		<p>Some content in menu 2.</p>
-	</div>    
- 			
-
-
-		
-			
-		
-
-		 
-               </div>
-            </div>
-            <div class="panel-footer text-right">
-               <button class="btn btn-xs btn-primary" ng-click="dataset.browse()">View Datafiles</button>
-            </div>
+               <!-- DEFAULT -->
+               <ANY ng-switch-default>
+			Not implemented
+               </ANY>
+            </ANY>
          </div>
       </div>
    </div>
 </div>
+
+
