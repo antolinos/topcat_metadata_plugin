@@ -9,6 +9,14 @@
 	      <br />
 	      <p style='font-size:10px;'>{{dataset.location}}</p>
 	   </div>
+	   <div class="pull-right">
+		<script type='text/ng-template' id="tabs"> 
+		<ul class="nav nav-tabs" id="myTabs">
+			<li class="active"><a data-toggle="tab" href="#summary" target="_self">Summary</a></li>
+			<li><a data-toggle="tab" href="#menu1" target="_self">Menu 1</a></li>
+			<li><a data-toggle="tab" href="#menu2" target="_self">Menu 2</a></li>
+		</ul>
+	    </div>
 	</div>	
 </script>
 
@@ -17,10 +25,7 @@
 <script type='text/ng-template' id="FLUOIMAGE">      
        <ng-include src="'LEFT_HEADER'"></ng-include>
 
-	<div class="pull-right">
-		<ul class="nav nav-tabs" id="myTabs">					 
-		</ul>
-	</div>
+	
 
 </script>
 
