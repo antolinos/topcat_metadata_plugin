@@ -10,14 +10,33 @@
 	      <p style='font-size:10px;'>{{dataset.location}}</p>
 	   </div>
 	   <div class="pull-right">
-		<script type='text/ng-template' id="tabs"> 
+		
 		<ul class="nav nav-tabs" id="myTabs">
-			<li class="active"><a data-toggle="tab" href="#summary" target="_self">Summary</a></li>
+			<li class="active"><a data-toggle="tab" href="#home" target="_self">Summary</a></li>
 			<li><a data-toggle="tab" href="#menu1" target="_self">Menu 1</a></li>
 			<li><a data-toggle="tab" href="#menu2" target="_self">Menu 2</a></li>
 		</ul>
 	    </div>
-	</div>	
+	</div>
+
+
+	<div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <h3>HOME</h3>
+	    <p>Some content.</p>
+	  </div>
+	  <div id="menu1" class="tab-pane fade">
+	    <h3>Menu 1</h3>
+	    <p>Some content in menu 1.</p>
+	  </div>
+	  <div id="menu2" class="tab-pane fade">
+	    <h3>Menu 2</h3>
+	    <p>Some content in menu 2.</p>
+	  </div>
+	</div>
+	
+
+
 </script>
 
 
