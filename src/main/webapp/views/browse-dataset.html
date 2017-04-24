@@ -1,48 +1,206 @@
 <!-- DATASET LEFT HEADER -->
 <script type='text/ng-template' id="LEFT_HEADER"> 
-	<div  class="panel-heading clearfix">
-	   <div class="pull-left">
-	      <span style='font-size:12px;color:blue;'>
-	      <kbd style='background-color:#CCCCCC;color:blue;'>{{dataset.definition}} {{dataset.scanType}}</kbd> 
-	      </span>
-	      {{dataset.startDate}}
-	      <br />
-	      <p style='font-size:10px;'>{{dataset.location}}</p>
-	   </div>
-	   <div class="pull-right">
-		
-		<ul class="nav nav-tabs" id="myTabs">
-			<li class="active"><a data-toggle="tab" href="#home" target="_self">Summary</a></li>
-			<li><a data-toggle="tab" href="#menu1" target="_self">Menu 1</a></li>
-			<li><a data-toggle="tab" href="#menu2" target="_self">Menu 2</a></li>
-		</ul>
-	    </div>
-	</div>
-
-
-	<div class="tab-content">
-	  <div id="home" class="tab-pane fade in active">
-	    <h3>HOME</h3>
-	    <p>Some content.</p>
-	  </div>
-	  <div id="menu1" class="tab-pane fade">
-	    <h3>Menu 1</h3>
-	    <p>Some content in menu 1.</p>
-	  </div>
-	  <div id="menu2" class="tab-pane fade">
-	    <h3>Menu 2</h3>
-	    <p>Some content in menu 2.</p>
-	  </div>
-	</div>
-	
-
-
+	<span style='font-size:12px;color:blue;'>
+	  <kbd style='background-color:#CCCCCC;color:blue;'>{{dataset.definition}} {{dataset.scanType}}</kbd> 
+	</span>
+	{{dataset.startDate}}
+	<br />
+	<p style='font-size:10px;'>{{dataset.location}}</p>
 </script>
 
 
 <!-- FLUOIMAGE -->
 <script type='text/ng-template' id="FLUOIMAGE">      
-       <ng-include src="'LEFT_HEADER'"></ng-include>
+       
+
+<div  class="container-fluid">
+   <div style='font-size:12px;' class="row">
+      <div class="col-sm-12">
+         <div class="panel panel-default with-nav-tabs" ng-repeat="dataset in browseDatasetController.datasets">
+            <div  class="panel-heading clearfix">
+               <div class="pull-left">
+                      <ng-include src="'LEFT_HEADER'"></ng-include>
+               </div>
+               <div class="pull-right">
+                  <ul class="nav nav-tabs" id="myTabs">
+                     <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>
+                     <li><a data-toggle="tab" href="#sensors_{{dataset.id}}" target="_self">Sensors</a></li>
+                     <li><a data-toggle="tab" href="#positioners_{{dataset.id}}" target="_self">Positioners</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="panel-body">
+		    <div class="tab-content">
+		       <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+		         <div class="container-fluid">
+   				<div class="row">
+					<div class="col-sm-2">
+						<table class="table table-condensed">			   
+							<tbody>
+								<tr>
+									<td>Dataset</td>
+									<td style='font-weight:bold'>{{dataset.name}}</td>				
+								</tr>			     
+								<tr>
+									<td>Technique</td>
+									<td style='font-weight:bold'>{{dataset.definition}} {{dataset.scanType}}</td>				
+								</tr>
+								<tr>
+									<td>Sample</td>
+									<td style='font-weight:bold'>{{dataset.Sample_name}}</td>				
+								</tr>
+								<tr>
+									<td>Description</td>
+									<td style='font-weight:bold'>{{dataset.Sample_description}}</td>				
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					 <div class="col-sm-4">
+					 <table class="table table-condensed">
+					    <tbody>
+					       <tr>
+						  <td>Machine Mode</td>
+						  <td style='font-weight:bold'>{{dataset.machineMode}}</td>
+					       </tr>
+					       <tr>
+						  <td>Insertion Device Name</td>
+						  <td style='font-weight:bold'>{{dataset.insertionDeviceName}}</td>
+					       </tr>
+					       <tr>
+						  <td>Insertion Device Gap</td>
+						  <td style='font-weight:bold'>{{dataset.insertionDeviceGap}}</td>
+					       </tr>
+					       <tr>
+						  <td>Vacuum ({{dataset.vacuum_labels}})</td>
+						  <td style='font-weight:bold'>{{dataset.vacuum_values}}</td>
+					       </tr>
+					       
+					    </tbody>
+					 </table>
+				      </div>
+					<div class="col-sm-2">
+					 <table class="table table-condensed">
+					    <tbody>
+					       <tr>
+						  <td>Axis 1</td>
+						  <td style='font-weight:bold'>{{dataset.scanAxis_1}}</td>
+					       </tr>
+					       <tr>
+						  <td>Axis 2</td>
+						  <td style='font-weight:bold'>{{dataset.scanAxis_2}}</td>
+					       </tr>
+					       <tr>
+						  <td>Monochromator Name</td>
+						  <td style='font-weight:bold'>{{dataset.monochromatorName}}</td>
+					       </tr>
+					       <tr>
+						  <td>Filter</td>
+						  <td style='font-weight:bold'>{{dataset.filter}}</td>
+					       </tr>
+					       <tr>
+						  <td>pixelSize</td>
+						  <td style='font-weight:bold'>{{dataset.pixelSize}}</td>
+					       </tr>
+					    </tbody>
+					 </table>
+					</div>
+
+					<div class="col-sm-2">
+					 <table class="table table-condensed">
+					    <tbody>
+					       <tr>
+						  <td>TOMO_energy</td>
+						  <td style='font-weight:bold'>{{dataset.TOMO_energy}}</td>
+					       </tr>
+					       <tr>
+						  <td>SR_Current</td>
+						  <td style='font-weight:bold'>{{dataset.SR_Current}}</td>
+					       </tr>
+					       <tr>
+						  <td>SCAN_N</td>
+						  <td style='font-weight:bold'>{{dataset.SCAN_N}}</td>
+					       </tr>
+					       <tr>
+						  <td>dwellTime</td>
+						  <td style='font-weight:bold'>{{dataset.dwellTime}}</td>
+					       </tr>
+					       <tr>
+						  <td>it</td>
+						  <td style='font-weight:bold'>{{dataset.it}}</td>
+					       </tr>
+					    </tbody>
+					 </table>
+					</div>
+
+
+			        </div>
+			 </div>
+		       </div>
+		       <div id="sensors_{{dataset.id}}" class="tab-pane fade">
+		           <div class="container-fluid">
+   				<div class="row">
+					<div class="col-sm-6">
+						<table class="table table-condensed">			   
+							<tbody>
+								<tr>
+									<td>Sample Sensors</td>
+									<td style='font-weight:bold'>{{dataset.sample_sensors_labels}}</td>				
+								</tr>			     
+								<tr>
+									<td>Sample Sensors Values</td>
+									<td style='font-weight:bold'>{{dataset.sample_sensors_values}}</td>				
+								</tr>
+								<tr>
+									<td>Optics Sensors</td>
+									<td style='font-weight:bold'>{{dataset.optics_sensors_labels}}</td>				
+								</tr>
+								<tr>
+									<td>Optics Sensors Values</td>
+									<td style='font-weight:bold'>{{dataset.optics_sensors_values}}</td>				
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			   </div>
+		       </div>
+		       <div id="positioners_{{dataset.id}}" class="tab-pane fade">
+		           <div class="container-fluid">
+   				<div class="row">
+					<div class="col-sm-6">
+						<table class="table table-condensed">			   
+							<tbody>
+								<tr>
+									<td>Sample Motors</td>
+									<td style='font-weight:bold'>{{dataset.sample_motors}}</td>				
+								</tr>			     
+								<tr>
+									<td>Sample Positions</td>
+									<td style='font-weight:bold'>{{dataset.sample_positions}}</td>				
+								</tr>
+								<tr>
+									<td>Detector</td>
+									<td style='font-weight:bold'>{{dataset.detectors_motors}}</td>				
+								</tr>
+								<tr>
+									<td>Detector Positions</td>
+									<td style='font-weight:bold'>{{dataset.optics_sensors_values}}</td>				
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			   </div>
+		       </div>
+		    </div>
+	      </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
 
 	
 

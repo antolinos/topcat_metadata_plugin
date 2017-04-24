@@ -22,13 +22,14 @@
                 /** Setting parameters at level of Dataset **/
 		
 		for (var i =0; i < datasets.length; i++){
-			console.log(datasets[i]);
+			console.log(datasets[i].id);
 			for (var j =0; j < datasets[i].parameters.length; j++){
 			                console.log(datasets[i].parameters[j].type.name + " " + datasets[i].parameters[j].stringValue);
 					datasets[i][datasets[i].parameters[j].type.name] = datasets[i].parameters[j].stringValue;
 
 			}
 		}
+		
 
     	});
 
