@@ -1,0 +1,121 @@
+ <div style='font-size:12px;' class="row">
+   <div class="col-sm-12">
+      <div class="panel panel-default with-nav-tabs" >
+         <div  class="panel-heading clearfix">
+            <div class="pull-left">
+               <ng-include src="'LEFT_HEADER'"></ng-include>
+            </div>
+            <div class="pull-right">
+               <ul class="nav nav-tabs" id="myTabs">
+                  <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>       
+              
+               </ul>
+            </div>
+         </div>
+         <div class="panel-body">
+            <div class="tab-content">
+               <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-sm-4">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Dataset</td>
+                                    <td style='font-weight:bold'>{{dataset.name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Type</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_experimentType}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td># Run Number</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_runNumber}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Prefix</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_prefix}}</td>
+                                 </tr>
+				 <tr>
+                                    <td>Code</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_code}}</td>
+                                 </tr>
+				<tr>
+                                    <td>Directory</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_directory}}</td>
+                                 </tr>  
+                              </tbody>
+                           </table>
+                        </div>
+      
+			<div class="col-sm-2">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Acronym</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_acronym}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Pixel Size</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_pixelSizeX}} - {{dataset.SAXS_pixelSizeY}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Beam Center</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_beamCenterX}} - {{dataset.SAXS_beamCenterY}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Detector Distance</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_detectorDistance}}</td>
+                                 </tr>
+				 <tr>
+                                    <td>Concentration</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_concentration}}</td>
+                                 </tr>
+				<tr>
+                                    <td>Normalisation</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_normalisation}}</td>
+                                 </tr>  
+                              </tbody>
+                           </table>
+                        </div>
+
+			<div class="col-sm-2">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Machine mode</td>
+                                    <td style='font-weight:bold'>{{dataset.InstrumentSource_mode}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Current</td>
+                                    <td style='font-weight:bold'>{{dataset.InstrumentSource_current}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Frames Count</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_numberFrames}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Time per frame</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_timePerFrame}}</td>
+                                 </tr>
+				 <tr>
+                                    <td>Wavelength</td>
+                                    <td style='font-weight:bold'>{{dataset.SAXS_waveLength}}</td>
+                                 </tr>
+				
+                              </tbody>
+                           </table>
+                        </div>
+
+
+
+                     </div>
+                  </div>
+               </div>
+             
+              
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

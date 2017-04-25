@@ -1,0 +1,144 @@
+ <div style='font-size:12px;' class="row">
+   <div class="col-sm-12">
+      <div class="panel panel-default with-nav-tabs" >
+         <div  class="panel-heading clearfix">
+            <div class="pull-left">
+               <ng-include src="'LEFT_HEADER'"></ng-include>
+            </div>
+            <div class="pull-right">
+               <ul class="nav nav-tabs" id="myTabs">
+                  <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>       
+                  <li><a data-toggle="tab" href="#positioners_{{dataset.id}}" target="_self">Positioners</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="panel-body">
+            <div class="tab-content">
+               <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-sm-4">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Dataset</td>
+                                    <td style='font-weight:bold'>{{dataset.name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Technique</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_scanType}} {{dataset.scanType}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td># Images</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_numberOfImages}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Template</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_template}}</td>
+                                 </tr>
+				 <tr>
+                                    <td>Detector Distance</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_detectorDistance}}</td>
+                                 </tr>
+				<tr>
+                                    <td>Beam Size @Sample</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_beamSizeAtSampleX}}, {{dataset.MX_beamSizeAtSampleY}}</td>
+                                 </tr>  
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="col-sm-2">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Machine Mode</td>
+                                    <td style='font-weight:bold'>{{dataset.InstrumentSource_mode}}</td>
+                                 </tr>                                 
+                                 <tr>
+                                    <td>Oscillation Overlap</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_oscillationOverlap}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Aperture</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_aperture}}</td>
+                                 </tr>
+  				<tr>
+                                    <td>Wavelength</td>
+                                    <td style='font-weight:bold'>{{dataset.InstrumentMonochromator_wavelength}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>MX_beamShape</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_beamShape}}</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                       
+                        <div class="col-sm-2">
+                           <table class="table table-condensed">
+                              <tbody>
+                                 <tr>
+                                    <td>Flux</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_fluxEnd}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Current</td>
+                                    <td style='font-weight:bold'>{{dataset.InstrumentSource_current}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Resolution</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_resolution}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Transmission</td>
+                                    <td style='font-weight:bold'>{{dataset.MX_transmission}}</td>
+                                 </tr>
+                                
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="col-sm-2" >
+                           <img style='border:1px solid blue' height='200px' width='200px' src='https://wwws.esrf.fr/ispyb/ispyb-ws/rest/77fe61f1f499d131e37fcc32a25bbb5f551f2402/proposal/{{dataset.proposal}}/mx/datacollection/{{dataset.MX_dataCollectionId}}/crystalsnaphot/1/get'>
+                        </div>
+			<div class="col-sm-2" >
+                           <img style='border:1px solid blue' height='200px' width='200px' src='https://wwws.esrf.fr/ispyb/ispyb-ws/rest/77fe61f1f499d131e37fcc32a25bbb5f551f2402/proposal/{{dataset.proposal}}/mx/datacollection/{{dataset.MX_dataCollectionId}}/qualityindicatorplot'>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             
+               <div id="positioners_{{dataset.id}}" class="tab-pane fade">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-sm-6">
+                            <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.MX_Motors">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+				 <tbody>
+				   	<tr>
+						<td ng-repeat="positioner in dataset.MX_Motors">				
+							<span ng-show="positioner.value != 'None'">
+								  {{positioner.value}}
+							</span>
+							<span ng-show="positioner.value == 'None'">
+								  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+							</span> 
+
+						</td>					
+					</tr>                                   
+				 </tbody>
+			      </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

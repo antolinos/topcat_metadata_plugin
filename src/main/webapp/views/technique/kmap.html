@@ -1,0 +1,70 @@
+  <div style='font-size:12px;' class="row">
+      <div class="col-sm-12">
+         <div class="panel panel-default with-nav-tabs" >
+            <div  class="panel-heading clearfix">
+               <div class="pull-left">
+                  <ng-include src="'LEFT_HEADER'"></ng-include>
+               </div>
+               <div class="pull-right">
+                  <ul class="nav nav-tabs" id="myTabs">
+                     <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>                    
+                     <li><a data-toggle="tab" href="#optics_{{dataset.id}}" target="_self">Optics</a></li>
+		     <li><a data-toggle="tab" href="#slits_{{dataset.id}}" target="_self">Slits</a></li>
+		     <li><a data-toggle="tab" href="#insertiondevice_{{dataset.id}}" target="_self">Insertion Device</a></li>
+                     <li><a data-toggle="tab" href="#detectors_{{dataset.id}}" target="_self">Detectors</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="panel-body">
+               <div class="tab-content">
+                  <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-2">
+                                <ng-include src="'DATASET_DESCRIPTION'"></ng-include>
+                           </div>
+                           <div class="col-sm-2">
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>Machine Mode</td>
+                                       <td style='font-weight:bold'>{{dataset.InstrumentSource_mode}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Current</td>
+                                       <td style='font-weight:bold'>{{dataset.InstrumentSource_current}}</td>
+                                    </tr>                                  
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-sm-2">
+                           	<div ng-include="'topcat_example_plugin/views/section/monochromator.html'"></div>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                                   
+
+ 		  <div id="optics_{{dataset.id}}" class="tab-pane fade">
+                    	<div ng-include="'topcat_example_plugin/views/section/optics.html'"></div>
+                  </div>
+
+		  <div id="slits_{{dataset.id}}" class="tab-pane fade">
+                    	<div ng-include="'topcat_example_plugin/views/section/slits.html'"></div>
+                  </div>
+
+		  <div id="insertiondevice_{{dataset.id}}" class="tab-pane fade">
+                    	<div ng-include="'topcat_example_plugin/views/section/insertiondevice.html'"></div>
+                  </div>
+		  <div id="detectors_{{dataset.id}}" class="tab-pane fade">
+                    	<div ng-include="'topcat_example_plugin/views/section/detector.html'"></div>
+                  </div>
+
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+

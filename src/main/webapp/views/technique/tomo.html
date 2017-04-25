@@ -1,0 +1,217 @@
+  <div style='font-size:12px;' class="row">
+      <div class="col-sm-12">
+         <div class="panel panel-default with-nav-tabs" >
+            <div  class="panel-heading clearfix">
+               <div class="pull-left">
+                  <ng-include src="'LEFT_HEADER'"></ng-include>
+               </div>
+               <div class="pull-right">
+                  <ul class="nav nav-tabs" id="myTabs">
+                     <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>
+                     <li><a data-toggle="tab" href="#sensors_{{dataset.id}}" target="_self">Sensors</a></li>
+                     <li><a data-toggle="tab" href="#positioners_{{dataset.id}}" target="_self">Positioners</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="panel-body">
+               <div class="tab-content">
+                  <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-2">
+                               <ng-include src="'DATASET_DESCRIPTION'"></ng-include>
+                           </div>
+                           <div class="col-sm-4">
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>Machine Mode</td>
+                                       <td style='font-weight:bold'>{{dataset.machineMode}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Insertion Device Name</td>
+                                       <td style='font-weight:bold'>{{dataset.insertionDeviceName}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Insertion Device Gap</td>
+                                       <td style='font-weight:bold'>{{dataset.insertionDeviceGap}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Vacuum ({{dataset.vacuum_labels}})</td>
+                                       <td style='font-weight:bold'>{{dataset.vacuum_values}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-sm-2">
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>Axis 1</td>
+                                       <td style='font-weight:bold'>{{dataset.scanAxis_1}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Axis 2</td>
+                                       <td style='font-weight:bold'>{{dataset.scanAxis_2}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Monochromator Name</td>
+                                       <td style='font-weight:bold'>{{dataset.monochromatorName}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Filter</td>
+                                       <td style='font-weight:bold'>{{dataset.filter}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>pixelSize</td>
+                                       <td style='font-weight:bold'>{{dataset.pixelSize}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-sm-2">
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>TOMO_energy</td>
+                                       <td style='font-weight:bold'>{{dataset.TOMO_energy}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>SR_Current</td>
+                                       <td style='font-weight:bold'>{{dataset.SR_Current}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>SCAN_N</td>
+                                       <td style='font-weight:bold'>{{dataset.SCAN_N}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>dwellTime</td>
+                                       <td style='font-weight:bold'>{{dataset.dwellTime}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>it</td>
+                                       <td style='font-weight:bold'>{{dataset.it}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="sensors_{{dataset.id}}" class="tab-pane fade">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-6">
+				 <kbd style='background-color:#BAF4FF;color:black;'>OPTICS</kbd>
+				<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.OpticsSensors">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+				 <tbody>
+				   	<tr>
+						<td ng-repeat="positioner in dataset.OpticsSensors">				
+							<span ng-show="positioner.value != 'None'">
+								  {{positioner.value}}
+							</span>
+							<span ng-show="positioner.value == 'None'">
+								  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+							</span> 
+
+						</td>					
+					</tr>                                   
+				 </tbody>
+				</table>
+				</div>
+				<div class="col-sm-6">
+				 <kbd style='background-color:#BAF4FF;color:black;'>SAMPLE</kbd>
+				<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.SampleSensors">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+				 <tbody>
+				   	<tr>
+						<td ng-repeat="positioner in dataset.SampleSensors">				
+							<span ng-show="positioner.value != 'None'">
+								  {{positioner.value}}
+							</span>
+							<span ng-show="positioner.value == 'None'">
+								  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+							</span> 
+
+						</td>					
+					</tr>                                   
+				 </tbody>
+				</table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="positioners_{{dataset.id}}" class="tab-pane fade">
+                    <div class="col-sm-12">
+				<kbd style='background-color:#BAF4FF;color:black;'>DETECTORS</kbd>
+				<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.DetectorMotors">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+				 <tbody>
+				   	<tr>
+						<td ng-repeat="positioner in dataset.DetectorMotors">				
+							<span ng-show="positioner.value != 'None'">
+								  {{positioner.value}}
+							</span>
+							<span ng-show="positioner.value == 'None'">
+								  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+							</span> 
+
+						</td>					
+					</tr>                                   
+				 </tbody>
+				</table>
+                           </div>
+
+ 			<div class="col-sm-12">
+				<kbd style='background-color:#BAF4FF;color:black;'>OPTICS</kbd>
+				<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.OpticsMotors">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+				 <tbody>
+				   	<tr>
+						<td ng-repeat="positioner in dataset.OpticsMotors">				
+							<span ng-show="positioner.value != 'None'">
+								  {{positioner.value}}
+							</span>
+							<span ng-show="positioner.value == 'None'">
+								  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+							</span> 
+
+						</td>					
+					</tr>                                   
+				 </tbody>
+				</table>
+                           </div>
+
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+

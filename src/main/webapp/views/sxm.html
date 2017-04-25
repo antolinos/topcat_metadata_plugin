@@ -1,0 +1,105 @@
+  <div style='font-size:12px;' class="row">
+      <div class="col-sm-12">
+         <div class="panel panel-default with-nav-tabs" >
+            <div  class="panel-heading clearfix">
+               <div class="pull-left">
+                  <ng-include src="'LEFT_HEADER'"></ng-include>
+               </div>
+               <div class="pull-right">
+                  <ul class="nav nav-tabs" id="myTabs">
+                     <li class="active"><a data-toggle="tab" href="#summary_{{dataset.id}}" target="_self">Summary</a></li>                    
+                     <li><a data-toggle="tab" href="#optics_{{dataset.id}}" target="_self">Optics</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="panel-body">
+               <div class="tab-content">
+                  <div id="summary_{{dataset.id}}" class="tab-pane fade in active">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-2">
+				<ng-include src="'DATASET_DESCRIPTION'"></ng-include>                                 
+                           </div>
+                           <div class="col-sm-2">
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>Machine Mode</td>
+                                       <td style='font-weight:bold'>{{dataset.InstrumentSource_mode}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Current</td>
+                                       <td style='font-weight:bold'>{{dataset.InstrumentSource_current}}</td>
+                                    </tr>                                  
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-sm-2">
+                           	<div ng-include="'topcat_example_plugin/views/section/monochromator.html'"></div>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                 
+                  <div id="positioners_{{dataset.id}}" class="tab-pane fade">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-6"> 
+                              <table class="table table-condensed">
+                                 <tbody>
+                                    <tr>
+                                       <td>Sample Motors</td>
+                                       <td style='font-weight:bold'>{{dataset.sample_motors}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Sample Positions</td>
+                                       <td style='font-weight:bold'>{{dataset.sample_positions}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Detector</td>
+                                       <td style='font-weight:bold'>{{dataset.detectors_motors}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Detector Positions</td>
+                                       <td style='font-weight:bold'>{{dataset.optics_sensors_values}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+ 		  <div id="optics_{{dataset.id}}" class="tab-pane fade">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="positioner in dataset.InstrumentOpticsPositioners">
+							{{positioner.name}}
+						</th>					
+					</tr>
+				</thead>
+                                 <tbody>
+                                   	<tr>
+						<td ng-repeat="positioner in dataset.InstrumentOpticsPositioners">
+							{{positioner.value}}
+						</td>					
+					</tr>                                   
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+

@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+	<div class="row">
+	   <div class="col-sm-12">
+	      <table class="table table-condensed">
+		<thead>
+			<tr>
+				<th ng-repeat="positioner in dataset.InstrumentOpticsPositioners">
+					{{positioner.name}}
+				</th>					
+			</tr>
+		</thead>
+		 <tbody>
+		   	<tr>
+				<td ng-repeat="positioner in dataset.InstrumentOpticsPositioners">				
+					<span ng-show="positioner.value != 'None'">
+						  {{positioner.value}}
+					</span>
+					<span ng-show="positioner.value == 'None'">
+						  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+					</span> 
+
+				</td>					
+			</tr>                                   
+		 </tbody>
+	      </table>
+	   </div>
+	</div>
+</div>
