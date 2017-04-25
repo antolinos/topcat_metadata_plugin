@@ -42,36 +42,36 @@
             <ANY ng-switch="dataset.definition">
                
 		<ANY ng-switch-when="BIOSAXS">
-                   <div ng-include="'topcat_example_plugin/views/technique/biosaxs.html'"></div>
+                   <div ng-include="'topcat_metadata_plugin/views/technique/biosaxs.html'"></div>
                </ANY>
                <ANY ng-switch-when="SXM">
-                   <div ng-include="'topcat_example_plugin/views/technique/sxm.html'"></div>
+                   <div ng-include="'topcat_metadata_plugin/views/technique/sxm.html'"></div>
                </ANY>
 
 		<ANY ng-switch-when="KMAP">
-                   <div ng-include="'topcat_example_plugin/views/technique/kmap.html'"></div>
+                   <div ng-include="'topcat_metadata_plugin/views/technique/kmap.html'"></div>
                </ANY>
 
                <ANY ng-switch-when="XRD">
-                   <div ng-include="'topcat_example_plugin/views/technique/sxm.html'"></div>
+                   <div ng-include="'topcat_metadata_plugin/views/technique/sxm.html'"></div>
                </ANY>
 
                <ANY ng-switch-when="fluoimage">
-                     <div ng-include="'topcat_example_plugin/views/technique/tomo.html'"></div>
+                     <div ng-include="'topcat_metadata_plugin/views/technique/tomo.html'"></div>
                </ANY>
                <ANY ng-switch-when="fasttomo">
-		     <div ng-include="'topcat_example_plugin/views/technique/tomo.html'"></div>
+		     <div ng-include="'topcat_metadata_plugin/views/technique/tomo.html'"></div>
                </ANY> 
                <ANY ng-switch-when="holonfpscan">
-                    <div ng-include="'topcat_example_plugin/views/technique/tomo.html'"></div>
+                    <div ng-include="'topcat_metadata_plugin/views/technique/tomo.html'"></div>
                </ANY>
 
 	      <ANY ng-switch-when="MX">             
-                    <div ng-include="'topcat_example_plugin/views/technique/mx.html'"></div>
+                    <div ng-include="'topcat_metadata_plugin/views/technique/mx.html'"></div>
                </ANY>
                <!-- DEFAULT -->
                <ANY ng-switch-default>
-			<div ng-include="'topcat_example_plugin/views/technique/kmap.html'"></div>
+			<div ng-include="'topcat_metadata_plugin/views/technique/kmap.html'"></div>
                </ANY>
             </ANY>
   	    <div class="panel-footer text-right">

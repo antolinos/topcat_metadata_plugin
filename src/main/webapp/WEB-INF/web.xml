@@ -7,11 +7,11 @@
 	version="2.5">
 
 	<servlet>
-		<servlet-name>topcat_example_plugin</servlet-name>
+		<servlet-name>topcat_metadata_plugin</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>org.icatproject.topcatexampleplugin</param-value>
+			<param-value>org.icatproject.topcatmetadataplugin</param-value>
 		</init-param>
 		<init-param>
 			<param-name>jersey.config.beanValidation.enableOutputValidationErrorEntity.server</param-name>
@@ -20,7 +20,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>topcat_example_plugin</servlet-name>
+		<servlet-name>topcat_metadata_plugin</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 

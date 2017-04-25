@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.icatproject</groupId>
-	<artifactId>topcat_example_plugin</artifactId>
+	<artifactId>topcat_metadata_plugin</artifactId>
 	<packaging>war</packaging>
 	<version>0.1.0-SNAPSHOT</version>
-	<name>topcat_example_plugin</name>
-	<description>Topcat Plugin</description>
+	<name>topcat_metadata_plugin</name>
+	<description>Metadata Topcat Plugin</description>
 
 	<build>
 		<plugins>
