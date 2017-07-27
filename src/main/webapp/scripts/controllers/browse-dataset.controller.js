@@ -6,7 +6,7 @@
 
     var app = angular.module('topcat');
     
-    app.controller('BrowseDatasetController', function($state, tc){
+    app.controller('BrowseDatasetController', function($state, tc, tcIcatEntity){
     	var that = this;
     	var investigationId = $state.params.investigationId;
     	var icat = tc.icat($state.params.facilityName);
@@ -21,7 +21,8 @@
 		Output: {"id":33159400,"name":"BY15_thin_zoom1","startDate":"2017-05-05T10:24:14.287+02:00","endDate":"2017-05-05T12:37:38.030+02:00","InstrumentSlitPrimary_vertical_offset":"0.4125"}
 	**/
 	this.parseDataset = function(unparsedDataset){	
-		var dataset = {};
+		
+		var dataset =  tcIcatEntity.create({entityType: 'dataset'}, tc.facility('ESRF'));
 		if (unparsedDataset){
 			dataset.id = unparsedDataset[0][0];
 			dataset.name = unparsedDataset[0][1];
@@ -39,16 +40,17 @@
 
 	this.load = function(){		
 	    	var promise = icat.query([
-	    		    "SELECT dataset.id, dataset.name, dataset.startDate, dataset.endDate,investigation.name, parameterType.name, parameter.stringValue, parameter.numericValue ",
+	    		    "SELECT dataset.id, dataset.name, dataset.startDate, dataset.endDate, investigation.name, parameterType.name, parameter.stringValue, parameter.numericValue",			   
 			    "FROM DatasetParameter as parameter ",
-			    "JOIN parameter.dataset dataset ",
+			    "JOIN parameter.dataset dataset ",			   
 			    "JOIN parameter.type parameterType ",
 			    "JOIN dataset.investigation investigation ",
 			    "where investigation.id = ? limit ?, ?", investigationId, (page - 1) * pageSize, pageSize
 	    	]);
 
 		promise.catch(function(error){
-			alert("There was an error: " + error.message);
+			
+			console.log("There was an error: " + error.message);
 		});
 
 		promise.then(function(parameters){
@@ -75,7 +77,7 @@
 		        /** Setting parameters at level of Dataset **/
 			for (var i =0; i < that.datasets.length; i++){
 				var dataset = that.datasets[i];
-						debugger				
+										
 				/** Definiton for MX is not set yet and for tomo is scanType **/
 				if (!dataset.definition){
 					if (dataset.scanType){
@@ -91,7 +93,7 @@
 				
 
 				/** Parsing optics from generic parameters **/
-				debugger
+				
 				parseNameAndValues(dataset, "InstrumentOpticsPositioners", dataset.InstrumentOpticsPositioners_name, dataset.InstrumentOpticsPositioners_value);
 				parseNameAndValues(dataset, "InstrumentInsertionDeviceTaper", dataset.InstrumentInsertionDevice_taper_name, dataset.InstrumentInsertionDevice_taper_value);
 				parseNameAndValues(dataset, "InstrumentInsertionDeviceGap", dataset.InstrumentInsertionDevice_gap_name, dataset.InstrumentInsertionDevice_gap_value);
