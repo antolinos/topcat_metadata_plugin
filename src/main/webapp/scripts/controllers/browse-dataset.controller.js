@@ -13,9 +13,19 @@
 	
     	this.datasets = [];
 	
-	var page = 1;
-	var pageSize = 2000000;
+	this.page = 1;
+	this.pageSize = 50*100;
+	this.pageCount = 1;
 
+	this.next = function(){
+		that.page = that.page + 1
+		that.getPage(that.page);
+	}
+
+	this.previous = function(){
+		that.page = that.page - 1
+		that.getPage(that.page);	
+	}
 	/**
 		Input: [[33159400, "BY15_thin_zoom1", "2017-05-05T10:24:14.287+02:00", "2017-05-05T12:37:38.030+02:00", "InstrumentSlitPrimary_vertical_offset", "0.4125", null]]
 		Output: {"id":33159400,"name":"BY15_thin_zoom1","startDate":"2017-05-05T10:24:14.287+02:00","endDate":"2017-05-05T12:37:38.030+02:00","InstrumentSlitPrimary_vertical_offset":"0.4125"}
@@ -38,22 +48,36 @@
 		return dataset;
 	};
 
-	this.load = function(){		
+	this.load = function(investigationId){		
+		icat.query([
+		    "SELECT count(parameter)",
+		    "FROM DatasetParameter as parameter ",
+		    "JOIN parameter.dataset dataset ",
+		    "JOIN parameter.type parameterType ",
+		    "JOIN dataset.investigation investigation ",
+		    "where investigation.id = ? limit ?, ?", investigationId, (that.page - 1) * that.pageSize, that.pageSize
+		]).then(function(result){
+		    that.pageCount = _.ceil(result[0] / that.pageSize);
+		    that.getPage(that.page);
+		});
+
+	};
+	this.getPage = function(page){		
 	    	var promise = icat.query([
 	    		    "SELECT dataset.id, dataset.name, dataset.startDate, dataset.endDate, investigation.name, parameterType.name, parameter.stringValue, parameter.numericValue",			   
 			    "FROM DatasetParameter as parameter ",
 			    "JOIN parameter.dataset dataset ",			   
 			    "JOIN parameter.type parameterType ",
 			    "JOIN dataset.investigation investigation ",
-			    "where investigation.id = ? limit ?, ?", investigationId, (page - 1) * pageSize, pageSize
+			    "where investigation.id = ? limit ?, ?", investigationId, (page - 1) * that.pageSize, that.pageSize
 	    	]);
 
-		promise.catch(function(error){
-			
+		promise.catch(function(error){			
 			console.log("There was an error: " + error.message);
 		});
 
 		promise.then(function(parameters){
+			that.datasets = [];
 			/** Position 0 is datasetId **/			
 			var unparsedDatasets = _.groupBy(parameters, 0);
 			for (var key in unparsedDatasets){
@@ -123,7 +147,9 @@
 	    	});
 	};
 
-	this.load();
+
+
+	this.load(investigationId);
 });
 
 
