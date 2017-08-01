@@ -34,7 +34,7 @@
 	  <kbd style='height:50px;background-color:#CCCCCC;color:blue;'>{{dataset.definition}}</kbd> 
 	</span>
 	<br />
-	<span >{{dataset.startDate | date:'fullDate'}} {{dataset.startDate | date:'shortTime'}}</span>
+	<span >Started on {{dataset.startDate | date:'fullDate'}} {{dataset.startDate | date:'shortTime'}} Finished at {{dataset.endDate | date:'shortTime'}}  ({{dataset.interval}} minutes)</span>
 	<br />
 	<p style='font-size:10px;'>{{dataset.location}}</p>
 	
@@ -79,7 +79,7 @@
 		<ANY ng-switch-when="BIOSAXS">
                    <div ng-include="'topcat_metadata_plugin/views/technique/biosaxs.html'"></div>
                </ANY>
-               <ANY ng-switch-when="SXM">
+                <!--<ANY ng-switch-when="SXM">
                    <div ng-include="'topcat_metadata_plugin/views/technique/sxm.html'"></div>
                </ANY>
 
@@ -91,7 +91,7 @@
                    <div ng-include="'topcat_metadata_plugin/views/technique/sxm.html'"></div>
                </ANY>
 
-               <ANY ng-switch-when="fluoimage">
+              <ANY ng-switch-when="fluoimage">
                      <div ng-include="'topcat_metadata_plugin/views/technique/tomo.html'"></div>
                </ANY>
                <ANY ng-switch-when="fasttomo">
@@ -99,14 +99,14 @@
                </ANY> 
                <ANY ng-switch-when="holonfpscan">
                     <div ng-include="'topcat_metadata_plugin/views/technique/tomo.html'"></div>
-               </ANY>
+               </ANY>-->
 
 	      <ANY ng-switch-when="MX">             
                     <div ng-include="'topcat_metadata_plugin/views/technique/mx.html'"></div>
                </ANY>
                <!-- DEFAULT -->
                <ANY ng-switch-default>
-			<div ng-include="'topcat_metadata_plugin/views/technique/kmap.html'"></div>
+			<div ng-include="'topcat_metadata_plugin/views/technique/generic.html'"></div>
                </ANY>
             </ANY>
   	    <div class="panel-footer text-right">

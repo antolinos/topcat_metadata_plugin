@@ -1,0 +1,58 @@
+
+<div class="container-fluid" >
+	<div class="row" >
+	   <kbd style='background-color:#BAF4FF;color:black;'>Sample Positioners</kbd>
+	   <div class="col-sm-12">
+	      <table class="table table-condensed">
+		<thead>
+			<tr>
+				<th ng-repeat="positioner in dataset.SamplePositioners">
+					{{positioner.name}}
+				</th>					
+			</tr>
+		</thead>
+		 <tbody>
+		   	<tr>
+				<td ng-repeat="positioner in dataset.SamplePositioners">				
+					<span ng-show="positioner.value != 'None'">
+						  {{positioner.value}}
+					</span>
+					<span ng-show="positioner.value == 'None'">
+						  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+					</span> 
+
+				</td>					
+			</tr>                                   
+		 </tbody>
+	      </table>
+	   </div>
+	</div>
+
+	<div class="row" >
+	   <kbd style='background-color:#BAF4FF;color:black;'>Environment Sensors</kbd>
+	   <div class="col-sm-12">
+	      <table class="table table-condensed">
+		<thead>
+			<tr>
+				<th ng-repeat="positioner in dataset.SampleEnvironmentSensors">
+					{{positioner.name}}
+				</th>					
+			</tr>
+		</thead>
+		 <tbody>
+		   	<tr>
+				<td ng-repeat="positioner in dataset.SampleEnvironmentSensors">				
+					<span ng-show="positioner.value != 'None'">
+						  {{positioner.value}}
+					</span>
+					<span ng-show="positioner.value == 'None'">
+						  <span style='color:red;' class="glyphicon glyphicon-remove"></span> 
+					</span> 
+
+				</td>					
+			</tr>                                   
+		 </tbody>
+	      </table>
+	   </div>
+	</div>
+</div>
