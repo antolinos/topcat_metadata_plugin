@@ -17,6 +17,8 @@
 	this.pageSize = 20*100;
 	this.pageCount = 1;
 
+	this.datasetsCountMessage = "";
+
 	this.next = function(){
 		that.page = that.page + 1
 		that.getPage(that.page);
@@ -68,6 +70,16 @@
 		    that.pageCount = _.ceil(result[0] / that.pageSize);
 		    that.getPage(that.page);
 		});
+
+		icat.query([
+		    "SELECT count(dataset)",
+		    "FROM Dataset as dataset ",		   
+		    "JOIN dataset.investigation investigation ",
+		    "where investigation.id = ?", investigationId
+		]).then(function(result){
+			that.datasetsCountMessage = (result) + " datasets";
+		});
+
 
 	};
 
